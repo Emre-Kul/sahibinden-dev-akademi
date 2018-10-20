@@ -34,3 +34,11 @@ bir frontend uygulaması yapmaya çalıştım.
 
 * Eksik Kısımlar : 
 Api ye istek alıp gelen verileri mapleyip chart js aracılığıyla gösterecek frontend bölümü yazılamadı.
+
+
+# Api endpointler: 
+* /api/cistats/
+* /api/cistats/country
+* /api/cistats/martialStatus
+* /api/cistats/gender
+

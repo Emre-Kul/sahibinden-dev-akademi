@@ -8,8 +8,8 @@ class CIStatService {
 
   static get(pagination) {
     return new Promise((resolve, reject) => {
-      CIStatModel.find().limit(pagination.limit || 100).exec().then((results) => {
-        resolve(CIStatMapperService.map(results));
+      CIStatModel.find({}).limit(pagination.limit || 100).exec().then((results) => {
+        resolve(results);
       }).catch(reject);
     });
   }

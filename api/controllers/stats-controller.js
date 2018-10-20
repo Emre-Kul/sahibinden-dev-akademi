@@ -3,7 +3,7 @@ const logger = require("../utils/logger.js");
 
 class StatsController {
   static get(req, res) {
-    StatsController.process(req, res, CIStatService.get);
+    StatsController.process(req, res, () => { return CIStatService.get(req.query.pagination); });
   }
 
   static getGenders(req, res) {
