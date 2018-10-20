@@ -2,25 +2,40 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("./utils/logger.js");
 
+const statRouter = require("./routes/stats.js");
+
 class App {
+  constructor() {
+    this.app = express();
+  }
 
-  static start(port){
-    const app = express();
+  start(port) {
 
-    app.use((req, res, next) => {
+
+    this.app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
       next();
     });
 
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(bodyParser.json());
 
-    app.listen(port, () => {
+    this._setRoutes();
+
+    this.app.listen(port, () => {
       logger.info("Server Started");
     });
 
+  }
+
+  static _setRoutes() {
+    this.app.get("*", (req, res) => {
+      res.status(404).send("NO PAGE!");
+    });
+
+    this.app.use("/stats", statRouter);
   }
 
 }

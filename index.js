@@ -1,3 +1,4 @@
 const App = require("./api/app.js");
+const app = new App();
 
-App.start(process.env.PORT || 9999);
+app.start(process.env.PORT || 9999);
