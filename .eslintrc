@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": 2015
+  },
+  "rules": {
+    "no-new": "off",
+    "new-cap": "off",
+    "no-return-await": "off",
+    "eol-last": ["error", "always"],
+    "quote-props": "off",
+    "arrow-body-style": "off",
+    "object-curly-newline": "off",
+    "function-paren-newline": ["error", "never"],
+    "newline-per-chained-call": "off",
+    "padded-blocks": "off",
+    "prefer-destructuring": "off",
+    "max-len": ["error", 150],
+    "class-methods-use-this": "off",
+    "indent": ["error", 2],
+    "quotes": ["error", "double"]
+  }
+}
