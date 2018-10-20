@@ -19,7 +19,7 @@ class StatsController {
   }
 
   static process(req, res, processFunction) {
-    processFunction().then((results) => {
+    processFunction(req.query.pagination).then((results) => {
       res.send(results);
     }).catch((err) => {
       logger.error(err);

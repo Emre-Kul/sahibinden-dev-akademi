@@ -6,9 +6,9 @@ const CIStatMapperService = require("./ci-stat-mapper-service.js");
 * */
 class CIStatService {
 
-  static get(limit = 100) { // deneme
+  static get(pagination) { // deneme
     return new Promise((resolve, reject) => {
-      CIStatModel.find().limit(limit).exec().then((results) => {
+      CIStatModel.find().limit(pagination.limit || 100).exec().then((results) => {
         resolve(CIStatMapperService.map(results));
       }).catch(reject);
     });
