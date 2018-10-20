@@ -1,5 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
+
+import {
+  Container,
+} from 'semantic-ui-react'
+
 
 class Footer extends React.Component{
   constructor(){
@@ -8,15 +12,12 @@ class Footer extends React.Component{
 
   render(){
     return(
-      <span>
+      <Container>
         "Hello From Footer!"
-      </span>
+      </Container>
     );
   }
 
 }
-
-Footer.propTypes = {};
-Footer.defaultProps = {};
 
 export default Footer;

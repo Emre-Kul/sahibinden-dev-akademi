@@ -5,8 +5,7 @@ import Header from "../common/header.jsx";
 import Footer from "../common/footer.jsx";
 
 import {
-  Container,
-  Label
+  Container
 } from 'semantic-ui-react'
 
 class Home extends React.Component{
@@ -18,9 +17,9 @@ class Home extends React.Component{
     return(
       <React.Fragment>
         <Header/>
-          <span>
+          <Container style={{ marginTop: '7em' }}>
             "Hello World!"
-          </span>
+          </Container>
         <Footer/>
       </React.Fragment>
     );
