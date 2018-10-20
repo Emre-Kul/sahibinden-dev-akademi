@@ -14,15 +14,19 @@ class CIStatService {
     });
   }
 
-  static getByGenders(){
-    return CIStatService.getCleanCIStats("$viewer_gender", CIStatMapperService.mapByGender);
+  static getByGenders() {
+    return CIStatService.getCleanCIStats("$viewer_gender", "gender");
   }
 
   static getByCountries() {
-    return CIStatService.getCleanCIStats("$viewer_user_city", CIStatMapperService.mapByCountry);
+    return CIStatService.getCleanCIStats("$viewer_user_city", "city");
   }
 
-  static getCleanCIStats(seperator, mapper) {
+  static getByMaritalStatus() {
+    return CIStatService.getCleanCIStats("$viewer_marital_status", "marital_status");
+  }
+
+  static getCleanCIStats(seperator, mapKey) {
     return new Promise((resolve, reject) => {
       CIStatModel.aggregate([
         {
@@ -35,7 +39,7 @@ class CIStatService {
           },
         },
       ]).exec().then((results) => {
-        resolve((mapper(results)));
+        resolve((CIStatMapperService.map(results, mapKey)));
       }).catch(reject);
     });
   }

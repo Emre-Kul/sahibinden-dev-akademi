@@ -1,24 +1,16 @@
 class CIStatMapperService {
 
-  static mapByCountry(cIStatResults) {
+  static map(cIStatResults, key) {
     return cIStatResults.map((cIStatResult) => {
-      return {
-        city: cIStatResult._id.val,
-        event: cIStatResult._id.event,
-        count: cIStatResult.total,
-      };
+      const mappedObj = {};
+      mappedObj[key] = cIStatResult._id.val;
+      mappedObj.event = cIStatResult._id.event;
+      mappedObj.count = cIStatResult.total;
+
+      return mappedObj;
     });
   }
 
-  static mapByGender(cIStatResults){
-    return cIStatResults.map((cIStatResult) => {
-      return {
-        gender: cIStatResult._id.val,
-        event: cIStatResult._id.event,
-        count: cIStatResult.total,
-      };
-    });
-  }
 }
 
 module.exports = CIStatMapperService;

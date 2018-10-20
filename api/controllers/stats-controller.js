@@ -14,6 +14,10 @@ class StatsController {
     StatsController.process(req, res, CIStatService.getByCountries);
   }
 
+  static getMaritalStatus(req, res){
+    StatsController.process(req, res, CIStatService.getByMaritalStatus);
+  }
+
   static process(req, res, processFunction) {
     processFunction().then((results) => {
       res.send(results);
