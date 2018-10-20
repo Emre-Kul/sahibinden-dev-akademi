@@ -1,4 +1,5 @@
 const statRouter = require("express").Router();
+
 const StatsController = require("../controllers/stats-controller.js");
 
 statRouter.get("/", StatsController.get);
