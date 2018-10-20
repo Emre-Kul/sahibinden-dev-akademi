@@ -1,8 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const logger = require("./utils/logger.js");
+const path = require("path");
 
-const statRouter = require("./routes/stats.js");
+const logger = require("./api/utils/logger.js");
+
+
+const statRouter = require("./api/routes/stats.js");
 
 class App {
   constructor() {
@@ -10,7 +13,6 @@ class App {
   }
 
   start(port) {
-
 
     this.app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
@@ -31,11 +33,14 @@ class App {
   }
 
   setRoutes() {
-    this.app.use("/api/stats", statRouter);
-    this.app.get("*", (req, res) => {
-      res.status(404).send("NO PAGE!");
-    });
+    this.app.use(express.static(path.join(__dirname, "build")));
+    this.app.use(express.static(path.join(__dirname, "assets")));
 
+    this.app.use("/api/stats", statRouter);
+
+    this.app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "build/index.html"));
+    });
   }
 
 }
