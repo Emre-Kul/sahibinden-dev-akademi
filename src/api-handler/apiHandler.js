@@ -5,8 +5,18 @@ import {
 } from "./apiConsts.js";
 
 class ApiHandler {
-  fetchByCountries(){}
-  fetchByCountry(){}
+
+  fetchByCountries(){
+    const url = "cistats/country" + applicationId;
+
+    return axios.get(url, STAT_API_CONFIG).then( (response) => {
+      return response.data;
+    })
+      .catch((err) => {
+        throw new Error(err.response.statusText);
+      });
+  }
+
 }
 
 export default ApiHandler;

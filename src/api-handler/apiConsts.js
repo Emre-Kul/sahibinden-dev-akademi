@@ -1,5 +1,7 @@
+const Config = require("../../config/configurator.js");
+
 const STAT_API_CONFIG = {
-  baseURL: "http://localhost:9999/api/",
+  baseURL: Config.API_URL,
 };
 export {
   STAT_API_CONFIG

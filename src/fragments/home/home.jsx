@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Header from "../common/header.jsx";
-import Footer from "../common/footer.jsx";
+import AllStats from "./all-stats.jsx";
 
 import {
   Container
@@ -18,9 +18,8 @@ class Home extends React.Component{
       <React.Fragment>
         <Header/>
           <Container style={{ marginTop: '7em' }}>
-            "Hello World!"
+            <AllStats />
           </Container>
-        <Footer/>
       </React.Fragment>
     );
   }
