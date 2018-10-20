@@ -31,7 +31,7 @@ class App {
   }
 
   setRoutes() {
-    this.app.use("/stats", statRouter);
+    this.app.use("/api/stats", statRouter);
     this.app.get("*", (req, res) => {
       res.status(404).send("NO PAGE!");
     });
