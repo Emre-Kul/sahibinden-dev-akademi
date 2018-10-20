@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const mongoose = require("mongoose");
+const Config = require("./config/configurator.js");
 
 const logger = require("./api/utils/logger.js");
 
@@ -26,6 +28,8 @@ class App {
 
     this.setRoutes();
 
+    mongoose.connect(Config.MONGO_URL);
+
     this.app.listen(port, () => {
       logger.info("Server Started");
     });
@@ -36,9 +40,9 @@ class App {
     this.app.use(express.static(path.join(__dirname, "build")));
     this.app.use(express.static(path.join(__dirname, "assets")));
 
-    this.app.use("/api/stats", statRouter);
+    this.app.use("/api/cistats", statRouter);
 
-    this.app.get("*", (req, res) => {
+    this.app.get("/", (req, res) => {
       res.sendFile(path.resolve(__dirname, "build/index.html"));
     });
   }
