@@ -7,6 +7,7 @@ class StatsController {
     CIStatService.getByCountries().then((results) => {
       res.send(results);
     }).catch((err) => {
+      console.log(err);
       logger.error(err);
       res.status(500).send("SOME ERROR!");
     });
