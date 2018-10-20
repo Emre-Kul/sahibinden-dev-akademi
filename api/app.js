@@ -22,7 +22,7 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
 
-    this._setRoutes();
+    this.setRoutes();
 
     this.app.listen(port, () => {
       logger.info("Server Started");
@@ -30,12 +30,12 @@ class App {
 
   }
 
-  static _setRoutes() {
+  setRoutes() {
+    this.app.use("/stats", statRouter);
     this.app.get("*", (req, res) => {
       res.status(404).send("NO PAGE!");
     });
 
-    this.app.use("/stats", statRouter);
   }
 
 }
