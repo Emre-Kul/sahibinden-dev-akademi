@@ -11,7 +11,14 @@ const nativeAdSchema = new Schema({
   "dailyBudgetKurus": Number,
 }, { collection: "NativeAd", versionKey: false });
 
-nativeAdSchema.statics = {};
+nativeAdSchema.statics = {
+  getAll() {
+    return this.find({}).exec();
+  },
+  getByVirtualId(id) {
+    return this.find({ id }).exec();
+  },
+};
 nativeAdSchema.methods = {};
 
 module.exports = mongoose.model("NativeAd", nativeAdSchema);

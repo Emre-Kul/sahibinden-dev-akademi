@@ -1,7 +1,16 @@
+const NativeAdModel = require("../models/native-ad-model.js");
+const logger = require("../utils/logger.js");
+
 class StatsController {
 
   static getCountries(req, res) {
-    res.send("WILL SERVE CLICK/IMP BY COUNTRIES");
+    NativeAdModel.getAll().then((results) => {
+      res.send(results);
+    }).catch((err) => {
+      logger.error(err);
+      res.status(500).send("SOME ERROR!");
+    });
+
   }
 
 }
